@@ -10,9 +10,13 @@ import reservasRoutes from './routes/reservaRoutes.js';
 
 const app = express();
 
+const cors = require('cors');
 app.use(cors({
-  origin: process.env.CORS_ORIGIN ? process.env.CORS_ORIGIN.split(',') : '*',
-  credentials: true,
+  origin: [
+    'http://localhost:3000', 
+    'https://backend-autos-6.onrender.com',
+    'https://frontend-carros-rjuz.vercel.app/' // ← agrega aquí el dominio de tu frontend en Vercel
+  ]
 }));
 
 app.use(express.json());
