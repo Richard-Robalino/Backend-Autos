@@ -2,7 +2,7 @@ import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
-import connectDB from './config/db.js'; // 👈 SOLO este import
+import connectDB from './config/db.js';
 import authRoutes from './routes/authRoutes.js';
 import clientesRoutes from './routes/clienteRoutes.js';
 import vehiculosRoutes from './routes/vehiculoRoutes.js';
@@ -10,11 +10,10 @@ import reservasRoutes from './routes/reservaRoutes.js';
 
 const app = express();
 
-const cors = require('cors');
 app.use(cors({
   origin: process.env.CORS_ORIGIN 
            ? process.env.CORS_ORIGIN.split(',') 
-           : '*',  // <-- si quieres permitir todos (temporal)
+           : '*',  // permitir todos (temporal)
   credentials: true
 }));
 
