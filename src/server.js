@@ -1,10 +1,8 @@
-// Entry point del servidor Express
 import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
-import { connectDB } from './config/db.js';
-
+import connectDB from './config/db.js'; // 👈 SOLO este import
 import authRoutes from './routes/authRoutes.js';
 import clientesRoutes from './routes/clienteRoutes.js';
 import vehiculosRoutes from './routes/vehiculoRoutes.js';
@@ -14,7 +12,7 @@ const app = express();
 
 app.use(cors({
   origin: process.env.CORS_ORIGIN ? process.env.CORS_ORIGIN.split(',') : '*',
-  credentials: true, // si tu frontend envía cookies/autenticación
+  credentials: true,
 }));
 
 app.use(express.json());
@@ -29,6 +27,6 @@ app.use('/api/reservas', reservasRoutes);
 
 const port = process.env.PORT || 4000;
 
-connectDB(process.env.MONGO_URI).then(() => {
+connectDB().then(() => {
   app.listen(port, () => console.log(`🚀 API lista en http://localhost:${port}`));
 });
