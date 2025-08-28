@@ -15,7 +15,7 @@ app.use(cors({
   origin: [
     'http://localhost:3000', 
     'https://backend-autos-6.onrender.com',
-    'https://frontend-carros-rjuz.vercel.app/' // ← agrega aquí el dominio de tu frontend en Vercel
+    'https://frontend-carros-jbvo.vercel.app/' // ← agrega aquí el dominio de tu frontend en Vercel
   ]
 }));
 
