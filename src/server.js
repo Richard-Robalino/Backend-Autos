@@ -12,11 +12,10 @@ const app = express();
 
 const cors = require('cors');
 app.use(cors({
-  origin: [
-    'http://localhost:3000', 
-    'https://backend-autos-6.onrender.com',
-    'https://frontend-carros-jbvo.vercel.app/' // ← agrega aquí el dominio de tu frontend en Vercel
-  ]
+  origin: process.env.CORS_ORIGIN 
+           ? process.env.CORS_ORIGIN.split(',') 
+           : '*',  // <-- si quieres permitir todos (temporal)
+  credentials: true
 }));
 
 app.use(express.json());
